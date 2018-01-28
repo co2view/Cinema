@@ -19,7 +19,5 @@ public interface SeatService {
 
     void save(Seat seat);
 
-    void update(Seat seat);
-
     void delete(int id);
 }

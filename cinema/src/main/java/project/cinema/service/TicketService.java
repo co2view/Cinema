@@ -19,8 +19,6 @@ public interface TicketService {
 
     void save(Ticket Ticket);
 
-    void update(Ticket Ticket);
-
     void delete(int id);
 
 }

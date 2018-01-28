@@ -19,7 +19,5 @@ public interface ProjectionService {
 
     void save(Projection projection);
 
-    void update(Projection projection);
-
     void delete(int id);
 }

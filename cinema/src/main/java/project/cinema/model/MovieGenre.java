@@ -9,5 +9,5 @@ package project.cinema.model;
  */
 public enum MovieGenre {
 
-    COMENY, ACTION, DRAMA, ADVENTURE, HOROR, FANTASY, THRILLER
+    COMEDY, ACTION, DRAMA, ADVENTURE, HOROR, FANTASY, THRILLER
 }

@@ -1,5 +1,17 @@
 package project.cinema.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * 
  * Ticket model
@@ -8,19 +20,31 @@ package project.cinema.model;
  * @since Jan 26, 2018
  *
  */
+@Entity
+@Table(name="ticket")
 public class Ticket {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_ticket")
     private int idTicket;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="id_projection", nullable = false, unique=false) 
     private Projection projection;
+	
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="id_seat", nullable = false,unique=false) 
     private Seat seat;
+    
+    @Enumerated(EnumType.STRING)
+	@Column(name="ticket_status", nullable = false,unique=false)
     private TicketStatus ticketStatus;
 
     public Ticket() {
-        super();
     }
 
     public Ticket(int idTicket, Projection projection, Seat seat, TicketStatus ticketStatus) {
-        super();
         this.idTicket = idTicket;
         this.projection = projection;
         this.seat = seat;
@@ -59,9 +83,5 @@ public class Ticket {
         this.ticketStatus = ticketStatus;
     }
 
-    @Override
-    public String toString() {
-        return "Ticket [idTicket=" + idTicket + ", projection=" + projection + ", seat=" + seat + ", ticketStatus=" + ticketStatus + "]";
-    }
 
 }

@@ -2,9 +2,11 @@ package project.cinema.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.cinema.model.Movie;
+import project.cinema.repository.MovieRepository;
 import project.cinema.service.MovieService;
 
 /**
@@ -12,30 +14,28 @@ import project.cinema.service.MovieService;
  */
 @Service
 public class MovieServiceImpl implements MovieService {
+	
+	@Autowired
+	MovieRepository movieRepository;
 
     @Override
     public Movie findById(int id) {
-        return null;
+        return movieRepository.findOne(id);
     }
 
     @Override
     public List<Movie> findAll() {
-        return null;
+        return movieRepository.findAll();
     }
 
     @Override
     public void save(Movie movie) {
-
-    }
-
-    @Override
-    public void update(Movie movie) {
-
+    	movieRepository.save(movie);
     }
 
     @Override
     public void delete(int id) {
-
+    	movieRepository.delete(id);
     }
 
 }

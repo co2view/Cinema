@@ -2,6 +2,16 @@ package project.cinema.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * Projection for movie model
  * 
@@ -9,20 +19,33 @@ import java.util.Date;
  * @since Jan 26, 2018
  *
  */
+@Entity
+@Table(name="projection")
 public class Projection {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_projection")
     private int idProjection;
+	
+	@Column(name="start_projection", nullable = false, unique=false)
     private Date startProjection;
+	
+	@Column(name="end_projection", nullable = false, unique=false)
     private Date endProjection;
+	
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="id_theater", nullable = false, unique=false) 
     private Theater theater;
+    
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="id_movie", nullable = false, unique=false) 
     private Movie movie;
 
     public Projection() {
-        super();
     }
 
     public Projection(int idProjection, Date startProjection, Date endProjection, Theater theater, Movie movie) {
-        super();
         this.idProjection = idProjection;
         this.startProjection = startProjection;
         this.endProjection = endProjection;
@@ -68,11 +91,6 @@ public class Projection {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    }
-
-    @Override
-    public String toString() {
-        return "Projection [idProjection=" + idProjection + ", startProjection=" + startProjection + ", endProjection=" + endProjection + ", theater=" + theater + ", movie=" + movie + "]";
     }
 
 }

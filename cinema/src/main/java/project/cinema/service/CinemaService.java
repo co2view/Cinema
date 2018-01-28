@@ -19,8 +19,6 @@ public interface CinemaService {
 
     void save(Cinema cinema);
 
-    void update(Cinema cinema);
-
     void delete(int id);
 
 }

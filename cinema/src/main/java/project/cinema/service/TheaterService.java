@@ -19,7 +19,6 @@ public interface TheaterService {
 
     void save(Theater theater);
 
-    void update(Theater theater);
-
     void delete(int id);
+
 }

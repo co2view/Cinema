@@ -19,7 +19,5 @@ public interface MovieService {
 
     void save(Movie movie);
 
-    void update(Movie movie);
-
     void delete(int id);
 }
