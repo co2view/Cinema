@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * 
  * Ticket model
@@ -21,42 +23,35 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="ticket")
+@Table(name = "ticket")
 public class Ticket {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_ticket")
-    private int idTicket;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="id_projection", nullable = false, unique=false) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "projection_id", referencedColumnName = "id", nullable = false, unique = false)
     private Projection projection;
-	
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="id_seat", nullable = false,unique=false) 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "seat_id", referencedColumnName = "id", nullable = false, unique = false)
     private Seat seat;
-    
+
     @Enumerated(EnumType.STRING)
-	@Column(name="ticket_status", nullable = false,unique=false)
+    @Column(name = "ticket_status", nullable = false, unique = false)
     private TicketStatus ticketStatus;
 
     public Ticket() {
     }
 
-    public Ticket(int idTicket, Projection projection, Seat seat, TicketStatus ticketStatus) {
-        this.idTicket = idTicket;
-        this.projection = projection;
-        this.seat = seat;
-        this.ticketStatus = ticketStatus;
+    public int getId() {
+        return id;
     }
 
-    public int getIdTicket() {
-        return idTicket;
-    }
-
-    public void setIdTicket(int idTicket) {
-        this.idTicket = idTicket;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Projection getProjection() {
@@ -82,6 +77,13 @@ public class Ticket {
     public void setTicketStatus(TicketStatus ticketStatus) {
         this.ticketStatus = ticketStatus;
     }
-
+    
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("ticketStatus", ticketStatus)
+                .toString();
+    }
 
 }

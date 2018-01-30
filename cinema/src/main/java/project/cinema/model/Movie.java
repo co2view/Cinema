@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * Movie model
  * 
@@ -17,36 +19,30 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="movie")
+@Table(name = "movie")
 public class Movie {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_movie")
-    private int idMovie;
-	
-	@Column(name="name", nullable = false,unique=false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name", nullable = false, unique = false)
     private String name;
-	
-	@Enumerated(EnumType.STRING)
-	@Column(name="movie_genre", nullable = false,unique=false)
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "movie_genre", nullable = false, unique = false)
     private MovieGenre movieGenre;
 
     public Movie() {
     }
 
-    public Movie(int idMovie, String name, MovieGenre movieGenre) {
-        this.idMovie = idMovie;
-        this.name = name;
-        this.movieGenre = movieGenre;
+    public int getId() {
+        return id;
     }
 
-    public int getIdMovie() {
-        return idMovie;
-    }
-
-    public void setIdMovie(int idMovie) {
-        this.idMovie = idMovie;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -63,6 +59,15 @@ public class Movie {
 
     public void setMovieGenre(MovieGenre movieGenre) {
         this.movieGenre = movieGenre;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("movieGenre", movieGenre)
+                .toString();
     }
 
 }

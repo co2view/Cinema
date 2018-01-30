@@ -1,6 +1,6 @@
 package project.cinema.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * Projection for movie model
  * 
@@ -20,60 +22,52 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="projection")
+@Table(name = "projection")
 public class Projection {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_projection")
-    private int idProjection;
-	
-	@Column(name="start_projection", nullable = false, unique=false)
-    private Date startProjection;
-	
-	@Column(name="end_projection", nullable = false, unique=false)
-    private Date endProjection;
-	
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="id_theater", nullable = false, unique=false) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "start_projection", nullable = false, unique = false)
+    private LocalDateTime startProjection;
+
+    @Column(name = "end_projection", nullable = false, unique = false)
+    private LocalDateTime endProjection;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false, unique = false)
     private Theater theater;
-    
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="id_movie", nullable = false, unique=false) 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "movie_id", referencedColumnName = "id", nullable = false, unique = false)
     private Movie movie;
 
     public Projection() {
     }
 
-    public Projection(int idProjection, Date startProjection, Date endProjection, Theater theater, Movie movie) {
-        this.idProjection = idProjection;
-        this.startProjection = startProjection;
-        this.endProjection = endProjection;
-        this.theater = theater;
-        this.movie = movie;
+    public int getId() {
+        return id;
     }
 
-    public int getIdProjection() {
-        return idProjection;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdProjection(int idProjection) {
-        this.idProjection = idProjection;
-    }
-
-    public Date getStartProjection() {
+    public LocalDateTime getStartProjection() {
         return startProjection;
     }
 
-    public void setStartProjection(Date startProjection) {
+    public void setStartProjection(LocalDateTime startProjection) {
         this.startProjection = startProjection;
     }
 
-    public Date getEndProjection() {
+    public LocalDateTime getEndProjection() {
         return endProjection;
     }
 
-    public void setEndProjection(Date endProjection) {
+    public void setEndProjection(LocalDateTime endProjection) {
         this.endProjection = endProjection;
     }
 
@@ -91,6 +85,15 @@ public class Projection {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("startProjection", startProjection)
+                .append("endProjection", endProjection)
+                .toString();
     }
 
 }

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -24,46 +26,37 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  *
  */
 @Entity
-@Table(name="theater")
+@Table(name = "theater")
 public class Theater {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_theater")
-    private int idTheater;
-	
-	@Column(name="name", nullable = false, unique=false)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name", nullable = false, unique = false)
     private String name;
-	
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="id_cinema", nullable = false, unique=false) 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cinema_id", referencedColumnName = "id", nullable = false, unique = false)
     private Cinema cinema;
-    
-    @OneToMany(targetEntity=Seat.class, mappedBy="theater", fetch=FetchType.EAGER)
+
+    @OneToMany(targetEntity = Seat.class, mappedBy = "theater", fetch = FetchType.EAGER)
     private List<Seat> seats;
-    
+
     @JsonIgnore
-    @OneToMany(targetEntity=Projection.class, mappedBy="theater", fetch=FetchType.LAZY)
+    @OneToMany(targetEntity = Projection.class, mappedBy = "theater", fetch = FetchType.LAZY)
     private List<Projection> projections;
 
     public Theater() {
     }
 
-    public Theater(int idTheater, String name, Cinema cinema, List<Seat> seats, List<Projection> projections) {
-        this.idTheater = idTheater;
-        this.name = name;
-        this.cinema = cinema;
-        this.seats = seats;
-        this.projections = projections;
+    public int getId() {
+        return id;
     }
 
-    
-    public int getIdTheater() {
-        return idTheater;
-    }
-
-    public void setIdTheater(int idTheater) {
-        this.idTheater = idTheater;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -98,4 +91,11 @@ public class Theater {
         this.projections = projections;
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .toString();
+    }
 }

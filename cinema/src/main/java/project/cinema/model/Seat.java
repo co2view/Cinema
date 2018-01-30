@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -20,41 +22,34 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  *
  */
 @Entity
-@Table(name="seat")
+@Table(name = "seat")
 public class Seat {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_seat")
-    private int idSeat;
-	
-	@Column(name="rov_num", nullable = false,unique=false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "rov_num", nullable = false, unique = false)
     private int rowNum;
-	
-	@Column(name="col_num", nullable = false,unique=false)
+
+    @Column(name = "col_num", nullable = false, unique = false)
     private int colNum;
-	
-	@JsonIgnore
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_theater", nullable = false,unique=false) 
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false, unique = false)
     private Theater theater;
 
     public Seat() {
     }
 
-    public Seat(int idSeat, int rowNum, int colNum, Theater theater) {
-        this.idSeat = idSeat;
-        this.rowNum = rowNum;
-        this.colNum = colNum;
-        this.theater = theater;
+    public int getId() {
+        return id;
     }
 
-    public int getIdSeat() {
-        return idSeat;
-    }
-
-    public void setIdSeat(int idSeat) {
-        this.idSeat = idSeat;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRowNum() {
@@ -73,12 +68,21 @@ public class Seat {
         this.colNum = colNum;
     }
 
-	public Theater getTheater() {
-		return theater;
-	}
+    public Theater getTheater() {
+        return theater;
+    }
 
-	public void setTheater(Theater theater) {
-		this.theater = theater;
-	}
+    public void setTheater(Theater theater) {
+        this.theater = theater;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("rowNum", rowNum)
+                .append("colNum", colNum)
+                .toString();
+    }
 
 }
