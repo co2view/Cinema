@@ -34,18 +34,18 @@ public class Theater {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name", nullable = false, unique = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cinema_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne
+    @JoinColumn(name = "cinema_id", referencedColumnName = "id", nullable = false)
     private Cinema cinema;
 
     @OneToMany(targetEntity = Seat.class, mappedBy = "theater", fetch = FetchType.EAGER)
     private List<Seat> seats;
 
     @JsonIgnore
-    @OneToMany(targetEntity = Projection.class, mappedBy = "theater", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Projection.class, mappedBy = "theater")
     private List<Projection> projections;
 
     public Theater() {

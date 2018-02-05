@@ -25,62 +25,64 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "cinema")
 public class Cinema {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private int id;
 
-    @Column(name = "name", nullable = false, unique = false)
-    private String name;
+	@Column(name = "name", nullable = false)
+	private String name;
 
-    @Column(name = "address", nullable = true, unique = false)
-    private String address;
+	@Column(name = "address", nullable = true)
+	private String address;
 
-    @JsonIgnore
-    @OneToMany(targetEntity = Theater.class, mappedBy = "cinema")
-    private List<Theater> theaters;
+	@JsonIgnore
+	@OneToMany(targetEntity = Theater.class, mappedBy = "cinema")
+	private List<Theater> theaters;
 
-    public Cinema() {
-    }
+	public Cinema() {
+	}
 
-    public int getId() {
-        return id;
-    }
+	public Cinema(String name, String address, List<Theater> theaters) {
+		this.name = name;
+		this.address = address;
+		this.theaters = theaters;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public List<Theater> getTheaters() {
-        return theaters;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setTheaters(List<Theater> theaters) {
-        this.theaters = theaters;
-    }
+	public List<Theater> getTheaters() {
+		return theaters;
+	}
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("name", name)
-                .append("address", address)
-                .toString();
-    }
+	public void setTheaters(List<Theater> theaters) {
+		this.theaters = theaters;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("id", id).append("name", name).append("address", address).toString();
+	}
 }

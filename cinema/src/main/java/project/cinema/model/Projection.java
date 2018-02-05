@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,18 +29,18 @@ public class Projection {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "start_projection", nullable = false, unique = false)
+    @Column(name = "start_projection", nullable = false)
     private LocalDateTime startProjection;
 
-    @Column(name = "end_projection", nullable = false, unique = false)
+    @Column(name = "end_projection", nullable = false)
     private LocalDateTime endProjection;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne
+    @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false)
     private Theater theater;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "movie_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "id", nullable = false)
     private Movie movie;
 
     public Projection() {

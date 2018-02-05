@@ -27,11 +27,11 @@ public class Movie {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name", nullable = false, unique = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "movie_genre", nullable = false, unique = false)
+    @Column(name = "movie_genre", nullable = false)
     private MovieGenre movieGenre;
 
     public Movie() {

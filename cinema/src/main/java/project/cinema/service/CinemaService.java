@@ -17,7 +17,7 @@ public interface CinemaService {
 
     List<Cinema> findAll();
 
-    void save(Cinema cinema);
+    Cinema save(Cinema cinema);
 
     void delete(int id);
 

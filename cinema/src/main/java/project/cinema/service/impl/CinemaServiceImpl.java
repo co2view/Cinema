@@ -30,8 +30,8 @@ public class CinemaServiceImpl implements CinemaService {
     }
 
     @Override
-    public void save(Cinema cinema) {
-    	cinemaRepository.save(cinema);
+    public Cinema save(Cinema cinema) {
+    	return cinemaRepository.save(cinema);
     }
 
     @Override

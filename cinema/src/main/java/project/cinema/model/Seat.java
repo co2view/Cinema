@@ -30,15 +30,15 @@ public class Seat {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "rov_num", nullable = false, unique = false)
+    @Column(name = "rov_num", nullable = false)
     private int rowNum;
 
-    @Column(name = "col_num", nullable = false, unique = false)
+    @Column(name = "col_num", nullable = false)
     private int colNum;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false, unique = false)
+    @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false)
     private Theater theater;
 
     public Seat() {

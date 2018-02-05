@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,16 +30,16 @@ public class Ticket {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "projection_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne
+    @JoinColumn(name = "projection_id", referencedColumnName = "id", nullable = false)
     private Projection projection;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "seat_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne
+    @JoinColumn(name = "seat_id", referencedColumnName = "id", nullable = false)
     private Seat seat;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "ticket_status", nullable = false, unique = false)
+    @Column(name = "ticket_status", nullable = false)
     private TicketStatus ticketStatus;
 
     public Ticket() {
