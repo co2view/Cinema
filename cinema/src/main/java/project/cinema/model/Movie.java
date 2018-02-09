@@ -34,9 +34,6 @@ public class Movie {
     @Column(name = "movie_genre", nullable = false)
     private MovieGenre movieGenre;
 
-    public Movie() {
-    }
-
     public int getId() {
         return id;
     }

@@ -29,11 +29,11 @@ public class Projection {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "start_projection", nullable = false)
-    private LocalDateTime startProjection;
+    @Column(name = "start", nullable = false)
+    private LocalDateTime start;
 
-    @Column(name = "end_projection", nullable = false)
-    private LocalDateTime endProjection;
+    @Column(name = "end", nullable = false)
+    private LocalDateTime end;
 
     @ManyToOne
     @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false)
@@ -43,9 +43,6 @@ public class Projection {
     @JoinColumn(name = "movie_id", referencedColumnName = "id", nullable = false)
     private Movie movie;
 
-    public Projection() {
-    }
-
     public int getId() {
         return id;
     }
@@ -54,20 +51,20 @@ public class Projection {
         this.id = id;
     }
 
-    public LocalDateTime getStartProjection() {
-        return startProjection;
+    public LocalDateTime getStart() {
+        return start;
     }
 
-    public void setStartProjection(LocalDateTime startProjection) {
-        this.startProjection = startProjection;
+    public void setStart(LocalDateTime start) {
+        this.start = start;
     }
 
-    public LocalDateTime getEndProjection() {
-        return endProjection;
+    public LocalDateTime getEnd() {
+        return end;
     }
 
-    public void setEndProjection(LocalDateTime endProjection) {
-        this.endProjection = endProjection;
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
     }
 
     public Theater getTheater() {
@@ -90,8 +87,8 @@ public class Projection {
     public String toString() {
         return new ToStringBuilder(this)
                 .append("id", id)
-                .append("startProjection", startProjection)
-                .append("endProjection", endProjection)
+                .append("start", start)
+                .append("end", end)
                 .toString();
     }
 

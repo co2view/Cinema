@@ -41,9 +41,6 @@ public class Seat {
     @JoinColumn(name = "theater_id", referencedColumnName = "id", nullable = false)
     private Theater theater;
 
-    public Seat() {
-    }
-
     public int getId() {
         return id;
     }

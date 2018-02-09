@@ -42,9 +42,6 @@ public class Ticket {
     @Column(name = "ticket_status", nullable = false)
     private TicketStatus ticketStatus;
 
-    public Ticket() {
-    }
-
     public int getId() {
         return id;
     }

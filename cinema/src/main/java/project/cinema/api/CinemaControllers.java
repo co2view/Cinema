@@ -16,13 +16,13 @@ import project.cinema.service.CinemaService;
 
 @RestController
 @RequestMapping(value = "api/cinema")
-public class CinemaController {
+public class CinemaControllers {
 
 	@Autowired
-	CinemaService cinemaService;
+    private CinemaService cinemaService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Cinema>> getAll() {
+    public ResponseEntity<List<Cinema>> findAll() {
 		return new ResponseEntity<>(cinemaService.findAll(), HttpStatus.OK);
 	}
 	

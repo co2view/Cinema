@@ -48,9 +48,6 @@ public class Theater {
     @OneToMany(targetEntity = Projection.class, mappedBy = "theater")
     private List<Projection> projections;
 
-    public Theater() {
-    }
-
     public int getId() {
         return id;
     }
