@@ -1,0 +1,11 @@
+<div data-ng-init="homePageInit()" align="center">
+	<h1>Cinema</h1>
+	<p>Web Application</p>
+
+	<table>
+		<tr data-ng-repeat="c in cinemas">
+			<td>{{ c.name }}</td>
+			<td>{{ c.address }}</td>
+		</tr>
+	</table>
+</div>
