@@ -1,6 +1,6 @@
 appCommonModule.service('homeService', function($http) {
 	
-	this.apiBasicUrl = 'api/cinema/';
+	this.apiBasicUrl = 'api/cinemas/';
 	
 	this.getAllCinemas = function() {
 		return $http({

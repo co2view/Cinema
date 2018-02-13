@@ -15,24 +15,24 @@ import project.cinema.model.Cinema;
 import project.cinema.service.CinemaService;
 
 @RestController
-@RequestMapping(value = "api/cinema")
-public class CinemaControllers {
+@RequestMapping(value = "api/cinemas")
+public class CinemaController {
 
-	@Autowired
+    @Autowired
     private CinemaService cinemaService;
-	
-	@RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Cinema>> findAll() {
-		return new ResponseEntity<>(cinemaService.findAll(), HttpStatus.OK);
-	}
-	
-	@RequestMapping(value="/{id}",method = RequestMethod.GET)
-	public ResponseEntity<Cinema> getById(@PathVariable(value = "id", required = true) int id) {
-		return new ResponseEntity<>(cinemaService.findById(id), HttpStatus.OK);
-	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Cinema> create(@RequestBody Cinema cinema) {
-		return new ResponseEntity<>(cinemaService.save(cinema), HttpStatus.CREATED);
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<Cinema>> findAll() {
+        return new ResponseEntity<>(cinemaService.findAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Cinema> getById(@PathVariable(value = "id", required = true) int id) {
+        return new ResponseEntity<>(cinemaService.findById(id), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Cinema> create(@RequestBody Cinema cinema) {
+        return new ResponseEntity<>(cinemaService.save(cinema), HttpStatus.CREATED);
+    }
 }
