@@ -60,8 +60,8 @@ INSERT INTO seat (id, rov_num, col_num, theater_id) VALUES (41, 2, 2, 6);
 INSERT INTO seat (id, rov_num, col_num, theater_id) VALUES (42, 2, 3, 6);
 
 -- All Movies
-INSERT INTO movie (id, name, movie_genre) VALUES (1, 'Movie1', 'DRAMA');
-INSERT INTO movie (id, name, movie_genre) VALUES (2, 'Movie2', 'COMEDY');
-INSERT INTO movie (id, name, movie_genre) VALUES (3, 'Movie3', 'DRAMA');
-INSERT INTO movie (id, name, movie_genre) VALUES (4, 'Movie4', 'THRILLER');
+INSERT INTO movie (id, name, movie_genre) VALUES (1, 'Braven', 'DRAMA');
+INSERT INTO movie (id, name, movie_genre) VALUES (2, 'Maze Runner: The Death Cure 3D', 'SF');
+INSERT INTO movie (id, name, movie_genre) VALUES (3, 'Black Panther 3D', 'DRAMA');
+INSERT INTO movie (id, name, movie_genre) VALUES (4, 'The Wall', 'THRILLER');
 

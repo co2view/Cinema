@@ -17,7 +17,7 @@ public interface MovieService {
 
     List<Movie> findAll();
 
-    void save(Movie movie);
+    Movie save(Movie movie);
 
     void delete(int id);
 }
