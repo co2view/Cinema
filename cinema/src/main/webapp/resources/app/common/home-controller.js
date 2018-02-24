@@ -2,9 +2,11 @@
 var appCommonModule = angular.module('cinemaHomeModule', []);
 
 // Controller for common module
-appCommonModule.controller('homeController', function($scope, homeService) {
+appCommonModule.controller('homeController', function($scope, homeService, config) {
 
+	
 	$scope.homePageInit = function() {
+		$scope.version = config.version;
 		// call common service module to get a list of the cinemas.
 		homeService.getAll().then(function successCallback(response) {
 			$scope.cinemas = response.data;

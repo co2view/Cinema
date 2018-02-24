@@ -19,4 +19,21 @@ appMovieModule.service('movieService', function($http) {
 		});
 	};
 	
+	this.save = function(movie){
+		return $http({
+			method: 'post', 
+			url: this.apiBasicUrl,
+			data: movie,
+			contentType : "application/json"
+		})
+	}
+	
+	this.delete = function(movieId){
+		return $http({
+			method: 'delete', 
+			url: this.apiBasicUrl+movieId,
+			contentType : "application/json"
+		})
+	}
+	
 });

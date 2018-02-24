@@ -17,11 +17,21 @@ cinemaApp.config([ '$routeProvider', function($routeProvider, $compile) {
     })
     .when('/movies/edit/:id', {
 		templateUrl : 'resources/app/movie/add-edit.html',
-		controller  : 'movieController'
+		controller  : 'movieAddEditController'
     })
     .when('/movies/add', {
 		templateUrl : 'resources/app/movie/add-edit.html',
-		controller  : 'movieController'
+		controller  : 'movieAddEditController'
     })
     
 } ])
+
+//use constants in whole app
+cinemaApp.constant('config', {
+	version: '1.0.0.'
+})
+
+// another way
+cinemaApp.run(function ($rootScope){
+	$rootScope.version = '1.0.0.';
+})

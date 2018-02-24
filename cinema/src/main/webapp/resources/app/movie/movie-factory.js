@@ -1,14 +1,14 @@
 appMovieModule.factory("movieFactory", function() {
 
-	movie = {};
+	var movie = {};
 
+	// ?
 	return {
 		getMovie : function() {
 			return movie;
 		},
-		setMovie : function(movie) {
-			this.movie = movie;
+		setMovie : function(m) {
+			movie = m;
 		}
 	}
-
 })

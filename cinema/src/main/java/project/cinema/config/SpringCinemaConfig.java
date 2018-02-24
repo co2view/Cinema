@@ -16,7 +16,7 @@ public class SpringCinemaConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("/resources/app/common/index.html");
+		registry.addViewController("/").setViewName("/resources/app/index.html");
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		super.addViewControllers(registry);
 	}

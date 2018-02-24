@@ -36,4 +36,9 @@ public class MovieController {
 		return new ResponseEntity<>(movieService.save(movie), HttpStatus.CREATED);
 	}
 
+	@RequestMapping(value = "/{movieId}",method = RequestMethod.DELETE)
+	public ResponseEntity delete(@PathVariable(value = "movieId", required = true) int movieId) {
+		movieService.delete(movieId);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }

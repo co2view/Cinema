@@ -10,9 +10,9 @@
 			</div>
 
 			<div class="form-group">
-				<label for="movieGanre" >Movie Ganre</label>
+				<label for="movieGenre" >Movie Genre</label>
 				<div class="col-sm-12 input-group">
-					<input type="text" class="form-control" id="movieGanre" data-ng-model="movie.movieGanre" placeholder="Movie Ganre" />
+					<input type="text" class="form-control" id="movieGenre" data-ng-model="movie.movieGenre" placeholder="Movie Genre" />
 				</div>
 			</div>
 
@@ -20,7 +20,7 @@
 			<br>
 			<div class="form-group">
 				<div>
-					<input class="btn btn-success btn-sm" type="submit" data-ng-click="save(movie)" value="Save" />
+					<input class="btn btn-success btn-sm" type="submit" data-ng-click="save(this.movie)" value="Save" />
 					<input  class="btn btn-warning btn-sm" type="button"  data-ng-click="backPage()" value="Cancel" />
 				</div>
 			</div>
